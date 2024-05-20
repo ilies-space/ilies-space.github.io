@@ -79,7 +79,7 @@ p:last-child {
 }
 
 .bg-main-color {
-  background-color: #ffde29;
+  background-color: ;
 }
 
 .bg-black-color {
@@ -169,7 +169,7 @@ p:last-child {
 }
 
 .section-title.white-color::before {
-  background: #ffde29;
+  background: #c95e22;
 }
 
 /*btn-primary*/
@@ -190,7 +190,7 @@ p:last-child {
 
 .btn-primary {
   color: #000000;
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
@@ -325,7 +325,7 @@ Preloader Area CSS
 Navbar Area CSS
 =================================================*/
 .bg-light {
-  background-color: #ffde29 !important;
+  background-color: #c95e22 !important;
 }
 
 .bg-light.bg-gray-light {
@@ -709,7 +709,7 @@ Main Banner Area CSS
 
 .hero-content .title h1 a, .hero-content .title h1 span {
   display: inline-block;
-  color: #ffde29;
+  color: #c95e22;
   font-size: 45px;
   font-weight: 700;
   font-family: "Playfair Display", serif;
@@ -739,7 +739,7 @@ Services Area CSS
 }
 
 .services-area.bg-black-color .section-title::before {
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .single-services-box {
@@ -753,7 +753,7 @@ Services Area CSS
   display: inline-block;
   width: 75px;
   height: 72px;
-  background: #ffde29;
+  background: #c95e22;
   position: absolute;
   top: 0;
   left: 23px;
@@ -806,12 +806,12 @@ Services Area CSS
 }
 
 .single-services-box.bg-main-color {
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .single-services-box.bg-main-color .icon {
   background: #000000;
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .single-services-box.bg-main-color h3 {
@@ -833,7 +833,7 @@ Services Area CSS
 
 .single-services-box.bg-white-color .icon {
   background: #000000;
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .single-services-box.bg-white-color h3 {
@@ -846,7 +846,7 @@ Services Area CSS
 
 .single-services-box.bg-white-color:hover .icon {
   color: #000000;
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .single-services-box.bg-gray-dark {
@@ -858,7 +858,7 @@ Services Area CSS
 }
 
 .single-services-box.bg-gray-dark:hover {
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 .single-services-box.bg-gray-dark:hover h3 {
@@ -878,7 +878,7 @@ Services Area CSS
 }
 
 .single-services-box.bg-dark-color:hover {
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 .single-services-box.bg-dark-color:hover h3 {
@@ -958,11 +958,11 @@ Services Area CSS
 }
 
 .services-box:hover .icon::before {
-  border-color: #ffde29;
+  border-color: #c95e22;
 }
 
 .services-box:hover .icon::after {
-  border-color: #ffde29;
+  border-color: #c95e22;
 }
 
 /*================================================
@@ -1054,7 +1054,7 @@ Portfolio Area CSS
 }
 
 .single-portfolio-box .portfolio-content h3 a {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .single-portfolio-box .portfolio-content span {
@@ -1218,7 +1218,7 @@ About Area CSS
 }
 
 .about-content.white-color .skills-list .skill-item .skill-bar .bar-inner .bar {
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .about-info-content h3 {
@@ -1309,7 +1309,7 @@ About Area CSS
 }
 
 .single-funfact.white-color h3 {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .single-funfact.white-color p {
@@ -1333,14 +1333,14 @@ Testimonial Area CSS
 }
 
 .testimonial-area .section-title::before {
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .single-feedback-item {
   margin-bottom: 30px;
   position: relative;
   padding: 20px;
-  background-color: #ffde29;
+  background-color: #c95e22;
   border-radius: 5px;
 }
 
@@ -1418,7 +1418,7 @@ Testimonial Area CSS
 }
 
 .single-feedback-item.bg-dark:hover {
-  background-color: #ffde29 !important;
+  background-color: #c95e22 !important;
 }
 
 .single-feedback-item.bg-dark:hover p {
@@ -1458,7 +1458,7 @@ Testimonial Area CSS
 }
 
 .single-feedback-item.bg-gray-dark:hover {
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 .single-feedback-item.bg-gray-dark:hover p {
@@ -1692,15 +1692,15 @@ Blog Area CSS
 }
 
 .single-blog-post.white-color .post-content .read-more-btn::before {
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .single-blog-post.white-color .post-content .read-more-btn:hover {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .single-blog-post.white-color:hover .read-more-btn {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 /*================================================
@@ -1842,7 +1842,7 @@ Contact Area CSS
 
 .contact-info.white-color .social li a:hover {
   color: #ffffff;
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 #contactForm .form-group {
@@ -1861,7 +1861,7 @@ Contact Area CSS
 
 #contactForm .btn-primary.main-color-btn {
   color: #000000;
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 #contactForm .btn-primary.main-color-btn:hover, #contactForm .btn-primary.main-color-btn:focus {
@@ -1915,7 +1915,7 @@ Contact Area CSS
 
 #contactForm.white-color .btn-primary {
   color: #000000;
-  background-color: #ffde29;
+  background-color: #c95e22;
 }
 
 #contactForm.white-color .btn-primary:hover, #contactForm.white-color .btn-primary:focus {
@@ -1982,11 +1982,11 @@ Blog Details Area CSS
 }
 
 .blog-details .article-content .entry-meta ul li a:hover {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .blog-details .article-content .entry-meta ul li i {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .blog-details .article-content .entry-meta ul li::before {
@@ -2118,7 +2118,7 @@ Blog Details Area CSS
 }
 
 .blog-details .article-footer .article-tags a:hover {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .blog-details .article-footer .article-share {
@@ -2163,7 +2163,7 @@ Blog Details Area CSS
   z-index: -1;
   -webkit-transform: scale(0);
           transform: scale(0);
-  background: #ffde29;
+  background: #c95e22;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.5s;
@@ -2238,7 +2238,7 @@ blockquote::before, .blockquote::before {
   width: 3px;
   left: -20px;
   position: absolute;
-  background: #ffde29;
+  background: #c95e22;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -2299,12 +2299,12 @@ blockquote::before, .blockquote::before {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 30px;
-  background: #ffde29;
+  background: #c95e22;
 }
 
 .comments-area .comment-body .reply a:hover {
   color: #000000;
-  border-color: #ffde29;
+  border-color: #c95e22;
 }
 
 .comments-area .comment-body .reply a:hover::before {
@@ -2355,7 +2355,7 @@ blockquote::before, .blockquote::before {
 }
 
 .comments-area .comment-metadata a:hover {
-  color: #ffde29;
+  color: #c95e22;
 }
 
 .comments-area .comment-content p {
@@ -2376,7 +2376,7 @@ blockquote::before, .blockquote::before {
   width: 3px;
   left: -20px;
   position: absolute;
-  background: #ffde29;
+  background: #c95e22;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -2428,7 +2428,7 @@ blockquote::before, .blockquote::before {
 }
 
 .comments-area .comment-respond input[type="date"]:focus, .comments-area .comment-respond input[type="time"]:focus, .comments-area .comment-respond input[type="datetime-local"]:focus, .comments-area .comment-respond input[type="week"]:focus, .comments-area .comment-respond input[type="month"]:focus, .comments-area .comment-respond input[type="text"]:focus, .comments-area .comment-respond input[type="email"]:focus, .comments-area .comment-respond input[type="url"]:focus, .comments-area .comment-respond input[type="password"]:focus, .comments-area .comment-respond input[type="search"]:focus, .comments-area .comment-respond input[type="tel"]:focus, .comments-area .comment-respond input[type="number"]:focus, .comments-area .comment-respond textarea:focus {
-  border-color: #ffde29;
+  border-color: #c95e22;
 }
 
 .comments-area .comment-respond input[type="date"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="time"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="datetime-local"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="week"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="month"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="text"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="email"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="url"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="password"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="search"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="tel"]::-webkit-input-placeholder, .comments-area .comment-respond input[type="number"]::-webkit-input-placeholder, .comments-area .comment-respond textarea::-webkit-input-placeholder {
@@ -2494,7 +2494,7 @@ blockquote::before, .blockquote::before {
 }
 
 .comments-area .comment-respond .form-submit input {
-  background: #ffde29;
+  background: #c95e22;
   border: none;
   color: #000000;
   padding: 10.5px 25px;
@@ -2527,7 +2527,7 @@ Pagination CSS
   height: 40px;
   margin: 0 3px;
   display: inline-block;
-  background-color: #ffde29;
+  background-color: #c95e22;
   line-height: 42px;
   color: #000000;
   font-size: 18px;
