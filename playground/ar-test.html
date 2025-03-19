@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Web Card - 3D Cube</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@2.4.0/aframe/build/aframe-ar.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .ar-info {
+            position: fixed;
+            top: env(safe-area-inset-top, 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .debug-info {
+            position: fixed;
+            bottom: env(safe-area-inset-bottom, 10px);
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+            font-size: 12px;
+            max-width: 80%;
+        }
+        @media (max-width: 600px) {
+            .ar-info {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ar-info" id="loading">Loading AR Experience...</div>
+    <div class="debug-info" id="debug"></div>
+
+    <a-scene
+        embedded
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix;"
+        renderer="logarithmicDepthBuffer: true; antialias: true;"
+        vr-mode-ui="enabled: false">
+        
+        <a-marker preset="hiro" smooth="true" smoothCount="5">
+            <a-entity
+                position="0 0.5 0"
+                animation="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true">
+                <a-box
+                    width="1"
+                    height="1"
+                    depth="1"
+                    color="#FF5733"
+                    material="opacity: 0.9; metalness: 0.5; roughness: 0.5;"
+                    shadow>
+                </a-box>
+            </a-entity>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+        window.addEventListener('load', () => {
+            const debugDiv = document.getElementById('debug');
+            const loadingDiv = document.getElementById('loading');
+            debugDiv.innerHTML = '';
+            
+            if (window.AFRAME) {
+                debugDiv.innerHTML += '✓ A-Frame loaded<br>';
+            }
+
+            const scene = document.querySelector('a-scene');
+            const marker = document.querySelector('a-marker');
+
+            scene.addEventListener('loaded', () => {
+                debugDiv.innerHTML += '✓ Scene loaded<br>';
+                loadingDiv.innerHTML = 'Point camera at Hiro marker';
+            });
+
+            scene.addEventListener('camera-init', () => {
+                debugDiv.innerHTML += '✓ Camera initialized<br>';
+            });
+
+            marker.addEventListener('markerFound', () => {
+                loadingDiv.innerHTML = 'Marker detected! Keep it in view';
+            });
+
+            marker.addEventListener('markerLost', () => {
+                loadingDiv.innerHTML = 'Marker lost! Point camera at Hiro marker';
+            });
+
+            // Check if running on iOS
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            if (isIOS) {
+                debugDiv.innerHTML += 'ℹ️ Running on iOS<br>';
+            }
+
+            // Check if running on HTTPS
+            if (location.protocol === 'https:') {
+                debugDiv.innerHTML += '✓ Using HTTPS<br>';
+            } else {
+                debugDiv.innerHTML += '⚠️ Not using HTTPS<br>';
+            }
+        });
+    </script>
+</body>
+</html> 
