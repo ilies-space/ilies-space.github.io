@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR.js Maxon Product Viewer</title>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <!-- we import arjs version without NFT but with marker + location based support -->
+    <!-- Switch back to regular AR.js -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <style>
         body {
@@ -83,14 +83,30 @@
         Point camera at the Maxon product image
     </div>
 
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false">
-        <a-marker type='pattern' url='pattern-maxon.patt'>
-            <a-box 
-                position="0 0.5 0" 
-                material="color: purple; opacity: 0.9;"
-                animation="property: rotation; to: 0 360 0; dur: 2000; easing: linear; loop: true">
-            </a-box>
+    <!-- Switch to basic AR scene setup -->
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: true; detectionMode: mono;'>
+        <!-- Use custom marker -->
+        <a-marker type='pattern' url='maxon-marker.patt'>
+            <a-entity position="0 0 0">
+                <!-- Purple box that rotates -->
+                <a-box 
+                    position="0 0.5 0" 
+                    scale="1 1 1"
+                    material="color: purple; opacity: 0.9;"
+                    animation="property: rotation; to: 0 360 0; dur: 2000; easing: linear; loop: true">
+                </a-box>
+                
+                <!-- Add text label -->
+                <a-text 
+                    value="Maxon"
+                    position="0 1.2 0"
+                    scale="1 1 1"
+                    align="center"
+                    color="white">
+                </a-text>
+            </a-entity>
         </a-marker>
+        
         <a-entity camera></a-entity>
     </a-scene>
 
@@ -101,6 +117,18 @@
             
             scene.addEventListener('loaded', function () {
                 loadingScreen.style.display = 'none';
+            });
+
+            // Add marker detection feedback
+            const marker = document.querySelector('a-marker');
+            marker.addEventListener('markerFound', function() {
+                console.log('Marker found');
+                document.querySelector('.instructions').textContent = 'Maxon product detected!';
+            });
+            
+            marker.addEventListener('markerLost', function() {
+                console.log('Marker lost');
+                document.querySelector('.instructions').textContent = 'Point camera at the Maxon product image';
             });
 
             // iOS fix for audio context
