@@ -1,0 +1,577 @@
+/* Global Styles */
+:root {
+    --primary-color: #00f7ff;
+    --secondary-color: #ff00ff;
+    --background-dark: #0a0a1f;
+    --text-light: #ffffff;
+    --text-gray: #a0a0a0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --nasa-red: #fc3d21;
+    --spacex-blue: #005288;
+    --apple-white: #f5f5f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(10, 10, 31, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.logo span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.user-actions button {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-register {
+    background: var(--apple-white);
+    color: var(--background-dark);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.video-background .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+}
+
+.btn-book {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 30px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-book:hover {
+    transform: scale(1.05);
+}
+
+/* Destinations Section */
+.destinations {
+    padding: 5rem 2rem;
+}
+
+.destinations h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.destination-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.destination-card h3 {
+    padding: 1rem;
+    color: var(--primary-color);
+}
+
+.destination-card p {
+    padding: 0 1rem 1rem;
+    color: var(--text-gray);
+}
+
+.btn-explore {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+    background: var(--primary-color);
+    color: var(--background-dark);
+}
+
+/* Booking Section */
+.booking {
+    padding: 5rem 2rem;
+    background: rgba(0, 247, 255, 0.05);
+}
+
+.booking h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 247, 255, 0.2);
+    border-radius: 5px;
+    color: var(--text-light);
+}
+
+.btn-search {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 5px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-search:hover {
+    transform: scale(1.02);
+}
+
+/* AI Assistant Chat */
+.ai-assistant {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.btn-chat-toggle {
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 30px;
+    color: var(--background-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    width: 300px;
+    height: 400px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    display: none;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.chat-window.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.chat-input {
+    padding: 1rem;
+    border-top: 1px solid rgba(0, 247, 255, 0.1);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 247, 255, 0.2);
+    border-radius: 5px;
+    color: var(--text-light);
+}
+
+.btn-send {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--background-dark);
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    background: rgba(0, 247, 255, 0.05);
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.footer-section a {
+    color: var(--text-gray);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 247, 255, 0.1);
+    color: var(--text-gray);
+}
+
+/* Animations */
+@keyframes parallax {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem;
+        position: relative;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        background: rgba(10, 10, 31, 0.95);
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 0.8rem;
+        margin: 0;
+    }
+
+    .user-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .btn-book {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .booking-form {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+
+    .ai-assistant {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .btn-chat-toggle {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .chat-window {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .footer-section {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .btn-book {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .destination-card {
+        margin: 0 0.5rem;
+    }
+
+    .booking-form {
+        padding: 1rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-search {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Add hamburger menu for mobile */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+}
+
+/* Add smooth transitions */
+.nav-links {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Fix video background on mobile */
+@media (max-width: 768px) {
+    .video-background iframe {
+        width: 100vw;
+        height: 100vh;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+} 

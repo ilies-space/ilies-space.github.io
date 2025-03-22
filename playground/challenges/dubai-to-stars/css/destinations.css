@@ -1,0 +1,231 @@
+/* Destinations Page Styles */
+
+/* Hero Section */
+.destinations-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('../assets/destinations-hero.jpg') center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.destinations-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.destinations-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.destinations-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.destinations-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+}
+
+/* Featured Destinations Section */
+.featured-destinations {
+    padding: 5rem 2rem;
+    background: var(--background-dark);
+}
+
+.featured-destinations h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.destination-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+}
+
+.destination-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.destination-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover .destination-image img {
+    transform: scale(1.1);
+}
+
+.destination-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 247, 255, 0.9);
+    color: var(--background-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.destination-content {
+    padding: 2rem;
+}
+
+.destination-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.destination-content p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.destination-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.destination-features li {
+    margin-bottom: 0.8rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.destination-features li i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Destination Details Section */
+.destination-details {
+    padding: 5rem 2rem;
+    background: rgba(0, 247, 255, 0.05);
+}
+
+.destination-details h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detail-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+}
+
+.detail-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.detail-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.detail-card p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.detail-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.detail-card ul li {
+    margin-bottom: 0.8rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.detail-card ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .destinations-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .destinations-grid,
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .destination-image {
+        height: 200px;
+    }
+} 

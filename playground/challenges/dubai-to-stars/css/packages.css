@@ -1,0 +1,314 @@
+/* Packages Page Styles */
+
+/* Hero Section */
+.packages-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('../images/packages-hero.jpg') center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.packages-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.packages-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.packages-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00f7ff, #00ff9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.packages-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+}
+
+/* Featured Packages Section */
+.featured-packages {
+    padding: 5rem 2rem;
+    background: #0a0a0a;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.package-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+}
+
+.package-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #00f7ff;
+}
+
+.package-card .price {
+    font-size: 2rem;
+    color: #00ff9d;
+    margin-bottom: 1.5rem;
+}
+
+.package-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.package-card li {
+    margin-bottom: 0.8rem;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+}
+
+.package-card li::before {
+    content: '✓';
+    color: #00f7ff;
+    margin-right: 0.5rem;
+}
+
+/* Package Comparison Section */
+.package-comparison {
+    padding: 5rem 2rem;
+    background: #0f0f0f;
+}
+
+.comparison-table {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparison-table th {
+    background: rgba(0, 247, 255, 0.1);
+    color: #00f7ff;
+    font-size: 1.2rem;
+}
+
+.comparison-table td {
+    color: #e0e0e0;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Special Offers Section */
+.special-offers {
+    padding: 5rem 2rem;
+    background: #0a0a0a;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    background: linear-gradient(135deg, rgba(0, 247, 255, 0.1), rgba(0, 255, 157, 0.1));
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.offer-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+}
+
+.offer-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #00f7ff;
+}
+
+.offer-card .discount {
+    font-size: 2.5rem;
+    color: #00ff9d;
+    margin-bottom: 1rem;
+}
+
+.offer-card p {
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+}
+
+/* Modal Styles */
+.booking-modal,
+.offer-modal,
+.booking-confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content,
+.confirmation-content {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-content h3,
+.confirmation-content h3 {
+    color: #00f7ff;
+    margin-bottom: 1.5rem;
+}
+
+.modal-form {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: #fff;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-cancel,
+.btn-confirm,
+.btn-close {
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.btn-confirm {
+    background: linear-gradient(45deg, #00f7ff, #00ff9d);
+    color: #000;
+}
+
+.btn-close {
+    background: #00f7ff;
+    color: #000;
+    margin-top: 1rem;
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(0, 247, 255, 0.8);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .packages-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .packages-grid,
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-table {
+        overflow-x: auto;
+    }
+    
+    .modal-content,
+    .confirmation-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+} 

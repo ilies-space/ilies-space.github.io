@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai to the Stars - Space Travel Booking Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Dubai to the Stars Logo">
+            <span>Dubai to the Stars</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#packages">Packages</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="user-actions">
+            <button class="btn-login">Login</button>
+            <button class="btn-register">Register</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="video-background">
+            <iframe 
+                src="https://www.youtube.com/embed/4bLz_4LKMsg?autoplay=1&mute=1&loop=1&playlist=4bLz_4LKMsg&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Dubai to the Stars</h1>
+            <p>Experience the future of space travel with our exclusive packages</p>
+            <button class="btn-book">Book Your Journey</button>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="assets/iss.jpg" alt="International Space Station">
+                <h3>International Space Station</h3>
+                <p>Experience life in low Earth orbit</p>
+                <button class="btn-explore">Explore</button>
+            </div>
+            <div class="destination-card">
+                <img src="assets/lunar-hotel.jpg" alt="Lunar Hotel">
+                <h3>Lunar Hotel</h3>
+                <p>Luxury accommodations on the Moon</p>
+                <button class="btn-explore">Explore</button>
+            </div>
+            <div class="destination-card">
+                <img src="assets/mars-station.jpg" alt="Mars Station">
+                <h3>Mars Station</h3>
+                <p>First human settlement on Mars</p>
+                <button class="btn-explore">Explore</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <h2>Book Your Journey</h2>
+        <div class="booking-form">
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <select id="destination">
+                    <option value="">Select Destination</option>
+                    <option value="iss">International Space Station</option>
+                    <option value="lunar">Lunar Hotel</option>
+                    <option value="mars">Mars Station</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="departure">Departure Date</label>
+                <input type="date" id="departure">
+            </div>
+            <div class="form-group">
+                <label for="class">Seat Class</label>
+                <select id="class">
+                    <option value="">Select Class</option>
+                    <option value="economy">Economy</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="vip">VIP Zero-Gravity</option>
+                </select>
+            </div>
+            <button class="btn-search">Search Flights</button>
+        </div>
+    </section>
+
+    <!-- AI Assistant Chat -->
+    <div class="ai-assistant">
+        <button class="btn-chat-toggle">
+            <i class="fas fa-robot"></i>
+            Space Travel Assistant
+        </button>
+        <div class="chat-window">
+            <div class="chat-header">
+                <h3>Space Travel Assistant</h3>
+                <button class="btn-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" placeholder="Ask me anything about space travel...">
+                <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Dubai to the Stars is your gateway to the future of space travel.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#destinations">Destinations</a>
+                <a href="#packages">Packages</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@dubaitothestars.com</p>
+                <p>Phone: +971 123 456 789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dubai to the Stars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html> 

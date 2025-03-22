@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dubai to the Stars</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Dubai to the Stars Logo">
+            <span>Dubai to the Stars</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="user-actions">
+            <button class="btn-login">Login</button>
+            <button class="btn-register">Register</button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="user-profile">
+                <div class="profile-image">
+                    <img src="assets/profile-placeholder.jpg" alt="User Profile">
+                </div>
+                <h3>John Doe</h3>
+                <p>Space Explorer</p>
+                <div class="space-miles">
+                    <i class="fas fa-star"></i>
+                    <span>25,000 Space Miles</span>
+                </div>
+            </div>
+            <nav class="dashboard-nav">
+                <a href="#overview" class="active">
+                    <i class="fas fa-home"></i>
+                    Overview
+                </a>
+                <a href="#bookings">
+                    <i class="fas fa-calendar-alt"></i>
+                    My Bookings
+                </a>
+                <a href="#profile">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </a>
+                <a href="#settings">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+                <a href="#support">
+                    <i class="fas fa-headset"></i>
+                    Support
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <h2>Welcome Back, John!</h2>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Upcoming Trips</h3>
+                        <p>2</p>
+                        <a href="#bookings" class="btn-view">View Details</a>
+                    </div>
+                    <div class="overview-card">
+                        <i class="fas fa-history"></i>
+                        <h3>Past Trips</h3>
+                        <p>3</p>
+                        <a href="#history" class="btn-view">View History</a>
+                    </div>
+                    <div class="overview-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Space Miles</h3>
+                        <p>25,000</p>
+                        <a href="#rewards" class="btn-view">View Rewards</a>
+                    </div>
+                    <div class="overview-card">
+                        <i class="fas fa-gift"></i>
+                        <h3>Special Offers</h3>
+                        <p>2 Available</p>
+                        <a href="#offers" class="btn-view">View Offers</a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Booking Confirmed</h4>
+                                <p>ISS Experience - Departure: June 15, 2024</p>
+                            </div>
+                            <div class="activity-time">2 days ago</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Earned Space Miles</h4>
+                                <p>+5,000 Space Miles for booking</p>
+                            </div>
+                            <div class="activity-time">2 days ago</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>New Offer Available</h4>
+                                <p>15% off Lunar Resort packages</p>
+                            </div>
+                            <div class="activity-time">5 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bookings Section -->
+            <section id="bookings" class="dashboard-section">
+                <h2>My Bookings</h2>
+                <div class="bookings-grid">
+                    <div class="booking-card">
+                        <div class="booking-header">
+                            <h3>ISS Experience</h3>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                        <div class="booking-details">
+                            <p><i class="fas fa-calendar"></i> June 15, 2024</p>
+                            <p><i class="fas fa-clock"></i> 3 days</p>
+                            <p><i class="fas fa-users"></i> 2 passengers</p>
+                        </div>
+                        <div class="booking-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="booking-card">
+                        <div class="booking-header">
+                            <h3>Lunar Resort</h3>
+                            <span class="booking-status pending">Pending</span>
+                        </div>
+                        <div class="booking-details">
+                            <p><i class="fas fa-calendar"></i> August 1, 2024</p>
+                            <p><i class="fas fa-clock"></i> 7 days</p>
+                            <p><i class="fas fa-users"></i> 1 passenger</p>
+                        </div>
+                        <div class="booking-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Dubai to the Stars is your gateway to the future of space travel.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@dubaitothestars.com</p>
+                <p>Phone: +971 123 456 789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dubai to the Stars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 
