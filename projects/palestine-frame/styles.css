@@ -95,6 +95,16 @@ main {
     border-radius: 50%;
     overflow: hidden;
     background-color: black;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.frame-circle:hover {
+    transform: scale(1.02);
+}
+
+.frame-circle:active {
+    transform: scale(0.98);
 }
 
 .placeholder-image {
@@ -110,6 +120,7 @@ main {
     background-size: 50%;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .palestine-frame {
@@ -204,6 +215,7 @@ main {
     height: 60%;
     object-fit: cover;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 /* iPhone X and newer */
