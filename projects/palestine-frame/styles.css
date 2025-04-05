@@ -1,0 +1,250 @@
+:root {
+    --palestine-black: #000000;
+    --palestine-white: #FFFFFF;
+    --palestine-green: #009736;
+    --palestine-red: #CE1126;
+    --spacing: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans Arabic', 'Noto Kufi Arabic', sans-serif;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.container {
+    flex: 1;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: var(--spacing);
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing) * 1.5);
+    padding-top: env(safe-area-inset-top, 20px);
+}
+
+h1 {
+    color: white;
+    margin-bottom: 12px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+.subtitle {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    line-height: 1.8;
+}
+
+.guide-text {
+    color: #999;
+    font-size: 1rem;
+}
+
+.guide-link {
+    color: #999;
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.preview-container {
+    width: 100%;
+    margin-bottom: var(--spacing);
+    background-color: black;
+}
+
+.frame-preview {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+}
+
+.frame-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: black;
+}
+
+.placeholder-image {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background-color: #333;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23666" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4-4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.palestine-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.palestine-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--palestine-red) 0deg 90deg,      /* Red (right) */
+        var(--palestine-black) 90deg 180deg,   /* Black (top) */
+        var(--palestine-white) 180deg 270deg,  /* White (left) */
+        var(--palestine-green) 270deg 360deg   /* Green (bottom) */
+    );
+    mask: radial-gradient(
+        transparent 0% 60%,
+        black 60% 100%
+    );
+    -webkit-mask: radial-gradient(
+        transparent 0% 60%,
+        black 60% 100%
+    );
+}
+
+.upload-button {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+.preview-section {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.instruction-text {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.download-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 100px;
+    background: white;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+.download-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+#previewImage {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* iPhone X and newer */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(var(--spacing), env(safe-area-inset-left));
+        padding-right: max(var(--spacing), env(safe-area-inset-right));
+        padding-bottom: max(var(--spacing), env(safe-area-inset-bottom));
+    }
+}
+
+/* Small phones */
+@media screen and (max-height: 667px) {
+    header {
+        margin-bottom: var(--spacing);
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 12px;
+    }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+    .image-preview-wrapper {
+        max-width: 450px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        font-size: 1.1rem;
+    }
+} 

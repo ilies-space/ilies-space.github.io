@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أظهر تضامنك 🇵🇸</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>أظهر تضامنك 🇵🇸</h1>
+            <p class="subtitle">لنتحد في صور ملفاتنا الشخصية لتسليط الضوء على القضية ✊</p>
+            <p class="guide-text">شاهد <a href="#" class="guide-link">الدليل خطوة بخطوة</a> 👀</p>
+        </header>
+
+        <main>
+            <div class="preview-container">
+                <div class="frame-preview">
+                    <div class="frame-circle">
+                        <div class="placeholder-image"></div>
+                        <div class="palestine-frame"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section" id="uploadSection">
+                <button class="upload-button" id="uploadButton">
+                    رفع صورة
+                </button>
+                <input type="file" id="imageInput" accept="image/*" hidden>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <p class="instruction-text">قم بتحميل الصورة، ثم استخدمها كصورة ملفك الشخصي الجديدة</p>
+                <button class="download-button" id="downloadBtn">
+                    تحميل الصورة <span class="download-icon">⬇️</span>
+                </button>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
