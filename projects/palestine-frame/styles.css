@@ -257,4 +257,104 @@ main {
     .btn {
         font-size: 1.1rem;
     }
+}
+
+/* Crop Modal Styles */
+.crop-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    padding: 20px;
+}
+
+.crop-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.crop-area {
+    width: 100%;
+    max-width: 500px;
+    height: calc(100% - 100px);
+    background: #000;
+    overflow: hidden;
+    position: relative;
+}
+
+#cropImage {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.crop-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-button, .apply-button {
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: none;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.control-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.apply-button {
+    background: var(--palestine-green);
+    color: white;
+}
+
+.control-button:hover, .apply-button:hover {
+    transform: scale(1.05);
+}
+
+.control-button:active, .apply-button:active {
+    transform: scale(0.95);
+}
+
+/* Override Cropper.js styles for dark theme */
+.cropper-view-box {
+    outline: 2px solid #fff;
+    outline-color: rgba(255, 255, 255, 0.75);
+}
+
+.cropper-face {
+    background-color: transparent;
+}
+
+.cropper-line, .cropper-point {
+    background-color: #fff;
+}
+
+.cropper-modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Make sure the crop area is circular */
+.cropper-view-box,
+.cropper-face {
+    border-radius: 50%;
 } 

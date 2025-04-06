@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('downloadBtn');
     const placeholderImage = document.querySelector('.placeholder-image');
     const frameCircle = document.querySelector('.frame-circle');
+    const cropModal = document.getElementById('cropModal');
+    const cropImage = document.getElementById('cropImage');
+    const zoomInButton = document.getElementById('zoomInButton');
+    const zoomOutButton = document.getElementById('zoomOutButton');
+    const rotateButton = document.getElementById('rotateButton');
+    const applyCropButton = document.getElementById('applyCrop');
+    
+    let cropper = null;
     let currentImage = null;
 
     // Handle click on upload button or frame circle
@@ -14,15 +22,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     frameCircle.addEventListener('click', () => {
-        imageInput.click();
+        if (!currentImage) {
+            imageInput.click();
+        }
     });
 
     // Handle file input change
     imageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
-            handleImageUpload(file);
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                cropImage.src = e.target.result;
+                cropModal.style.display = 'block';
+                
+                // Destroy existing cropper if any
+                if (cropper) {
+                    cropper.destroy();
+                }
+
+                // Initialize Cropper.js
+                cropper = new Cropper(cropImage, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    dragMode: 'move',
+                    autoCropArea: 1,
+                    cropBoxResizable: false,
+                    cropBoxMovable: false,
+                    guides: false,
+                    center: true,
+                    highlight: false,
+                    background: false,
+                    rotatable: true,
+                    scalable: true,
+                    zoomable: true,
+                    minCropBoxWidth: 200,
+                    minCropBoxHeight: 200
+                });
+            };
+            reader.readAsDataURL(file);
         }
+    });
+
+    // Zoom controls
+    zoomInButton.addEventListener('click', () => {
+        cropper.zoom(0.1);
+    });
+
+    zoomOutButton.addEventListener('click', () => {
+        cropper.zoom(-0.1);
+    });
+
+    // Rotate control
+    rotateButton.addEventListener('click', () => {
+        cropper.rotate(90);
+    });
+
+    // Apply crop
+    applyCropButton.addEventListener('click', () => {
+        const croppedCanvas = cropper.getCroppedCanvas({
+            width: 1920,
+            height: 1920,
+            imageSmoothingEnabled: true,
+            imageSmoothingQuality: 'high'
+        });
+
+        currentImage = new Image();
+        currentImage.onload = () => {
+            const previewImage = document.getElementById('previewImage') || document.createElement('img');
+            previewImage.id = 'previewImage';
+            previewImage.src = currentImage.src;
+            if (!document.getElementById('previewImage')) {
+                placeholderImage.parentNode.appendChild(previewImage);
+            }
+            placeholderImage.style.display = 'none';
+            uploadSection.style.display = 'none';
+            previewSection.style.display = 'block';
+            cropModal.style.display = 'none';
+            
+            // Destroy cropper
+            cropper.destroy();
+            cropper = null;
+        };
+        currentImage.src = croppedCanvas.toDataURL('image/png', 1.0);
     });
 
     // Handle download button with high quality
@@ -44,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillRect(0, 0, size, size);
 
         // Calculate dimensions
-        const frameThickness = size * 0.125;
-        const innerRadius = size * 0.4;
+        const frameThickness = size * 0.15;
+        const innerRadius = size * 0.35;
         const centerX = size / 2;
         const centerY = size / 2;
 
@@ -57,14 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Draw the image
         if (currentImage) {
-            // Calculate scale while maintaining aspect ratio
             const scale = (innerRadius * 2) / Math.min(currentImage.naturalWidth, currentImage.naturalHeight);
             const scaledWidth = currentImage.naturalWidth * scale;
             const scaledHeight = currentImage.naturalHeight * scale;
             const x = centerX - scaledWidth/2;
             const y = centerY - scaledHeight/2;
-            
-            // Draw image at high resolution
             ctx.drawImage(currentImage, x, y, scaledWidth, scaledHeight);
         }
         ctx.restore();
@@ -72,11 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Draw the Palestine flag frame
         ctx.save();
         const outerRadius = size / 2;
-        
-        // Draw the colored sections
         const gradient = ctx.createConicGradient(0, centerX, centerY);
         
-        // Add color stops for the flag sections (25% each)
         gradient.addColorStop(0, '#CE1126');     // Red (right) 0-25%
         gradient.addColorStop(0.25, '#CE1126');
         gradient.addColorStop(0.25, '#000000');  // Black (top) 25-50%
@@ -103,30 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-        }, 'image/png', 1.0); // Maximum quality
+        }, 'image/png', 1.0);
     });
-
-    // Function to handle image upload
-    function handleImageUpload(file) {
-        const reader = new FileReader();
-        
-        reader.onload = (e) => {
-            const img = new Image();
-            img.onload = () => {
-                currentImage = img;
-                const previewImage = document.getElementById('previewImage') || document.createElement('img');
-                previewImage.id = 'previewImage';
-                previewImage.src = e.target.result;
-                if (!document.getElementById('previewImage')) {
-                    placeholderImage.parentNode.appendChild(previewImage);
-                }
-                placeholderImage.style.display = 'none';
-                uploadSection.style.display = 'none';
-                previewSection.style.display = 'block';
-            };
-            img.src = e.target.result;
-        };
-        
-        reader.readAsDataURL(file);
-    }
 }); 

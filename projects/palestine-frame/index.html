@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أظهر تضامنك 🇵🇸</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,6 +32,29 @@
                 <input type="file" id="imageInput" accept="image/*" hidden>
             </div>
 
+            <!-- Crop Modal -->
+            <div class="crop-modal" id="cropModal">
+                <div class="crop-container">
+                    <div class="crop-area">
+                        <img id="cropImage" src="" alt="صورة للتحرير">
+                    </div>
+                    <div class="crop-controls">
+                        <button class="control-button" id="zoomInButton">
+                            <span>تكبير</span> 🔍+
+                        </button>
+                        <button class="control-button" id="zoomOutButton">
+                            <span>تصغير</span> 🔍-
+                        </button>
+                        <button class="control-button" id="rotateButton">
+                            <span>تدوير</span> 🔄
+                        </button>
+                        <button class="apply-button" id="applyCrop">
+                            <span>تطبيق</span> ✓
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="preview-section" id="previewSection" style="display: none;">
                 <p class="instruction-text">قم بتحميل الصورة، ثم استخدمها كصورة ملفك الشخصي الجديدة</p>
                 <button class="download-button" id="downloadBtn">
@@ -39,6 +63,7 @@
             </div>
         </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
