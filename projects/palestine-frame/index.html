@@ -6,6 +6,11 @@
     <title>أظهر تضامنك 🇵🇸</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Add Open Graph meta tags for better sharing -->
+    <meta property="og:title" content="أظهر تضامنك مع فلسطين 🇵🇸">
+    <meta property="og:description" content="أضف إطار علم فلسطين إلى صورتك الشخصية">
+    <meta property="og:image" content="https://ilies-space.github.io/projects/palestine-frame/preview.png">
+    <meta property="og:url" content="https://ilies-space.github.io/projects/palestine-frame/">
 </head>
 <body>
     <div class="container">
@@ -57,11 +62,40 @@
 
             <div class="preview-section" id="previewSection" style="display: none;">
                 <p class="instruction-text">قم بتحميل الصورة، ثم استخدمها كصورة ملفك الشخصي الجديدة</p>
-                <button class="download-button" id="downloadBtn">
-                    تحميل الصورة <span class="download-icon">⬇️</span>
-                </button>
+                <div class="action-buttons">
+                    <button class="download-button" id="downloadBtn">
+                        تحميل الصورة <span class="download-icon">⬇️</span>
+                    </button>
+                    <button class="change-image-button" id="changeImageBtn">
+                        تغيير الصورة 🔄
+                    </button>
+                </div>
+                <div class="share-section">
+                    <p class="share-text">شارك هذا الموقع مع أصدقائك</p>
+                    <div class="share-buttons">
+                        <button class="share-button" id="shareWhatsapp">
+                            WhatsApp 💬
+                        </button>
+                        <button class="share-button" id="shareTwitter">
+                            Twitter 🐦
+                        </button>
+                        <button class="share-button" id="shareFacebook">
+                            Facebook 👥
+                        </button>
+                    </div>
+                </div>
             </div>
         </main>
+
+        <footer>
+            <p class="footer-text">
+                صُنع بكل ❤️ وتضامناً مع فلسطين
+                <br>
+                <a href="https://www.instagram.com/ilies_ouldmenouer/" target="_blank" class="creator-link">
+                    @ilies_ouldmenouer
+                </a>
+            </p>
+        </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="script.js"></script>

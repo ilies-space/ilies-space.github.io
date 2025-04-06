@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewSection = document.getElementById('previewSection');
     const uploadSection = document.getElementById('uploadSection');
     const downloadBtn = document.getElementById('downloadBtn');
+    const changeImageBtn = document.getElementById('changeImageBtn');
     const placeholderImage = document.querySelector('.placeholder-image');
     const frameCircle = document.querySelector('.frame-circle');
     const cropModal = document.getElementById('cropModal');
@@ -12,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomOutButton = document.getElementById('zoomOutButton');
     const rotateButton = document.getElementById('rotateButton');
     const applyCropButton = document.getElementById('applyCrop');
+    const shareWhatsapp = document.getElementById('shareWhatsapp');
+    const shareTwitter = document.getElementById('shareTwitter');
+    const shareFacebook = document.getElementById('shareFacebook');
     
     let cropper = null;
     let currentImage = null;
@@ -25,6 +29,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!currentImage) {
             imageInput.click();
         }
+    });
+
+    // Handle change image button
+    changeImageBtn.addEventListener('click', () => {
+        imageInput.click();
+    });
+
+    // Share buttons functionality
+    const shareUrl = encodeURIComponent(window.location.href);
+    const shareText = encodeURIComponent('أضف إطار علم فلسطين إلى صورتك الشخصية 🇵🇸');
+
+    shareWhatsapp.addEventListener('click', () => {
+        window.open(`https://api.whatsapp.com/send?text=${shareText}%0A${shareUrl}`, '_blank');
+    });
+
+    shareTwitter.addEventListener('click', () => {
+        window.open(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`, '_blank');
+    });
+
+    shareFacebook.addEventListener('click', () => {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
     });
 
     // Handle file input change

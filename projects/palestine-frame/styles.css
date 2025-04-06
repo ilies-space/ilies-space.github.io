@@ -357,4 +357,101 @@ main {
 .cropper-view-box,
 .cropper-face {
     border-radius: 50%;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.change-image-button {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.share-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.share-text {
+    color: #999;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.share-button {
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+.share-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-text {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.creator-link {
+    color: var(--palestine-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.creator-link:hover {
+    color: white;
+}
+
+/* Animation for buttons */
+.download-button:hover,
+.change-image-button:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.download-button:active,
+.change-image-button:active,
+.share-button:active {
+    transform: translateY(0);
 } 
