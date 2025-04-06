@@ -44,6 +44,7 @@ h1 {
     font-size: 2rem;
     font-weight: bold;
     font-family: 'Noto Kufi Arabic', sans-serif;
+    text-align: center;
 }
 
 .subtitle {
@@ -51,6 +52,9 @@ h1 {
     font-size: 1.1rem;
     margin-bottom: 8px;
     line-height: 1.8;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 8px;
 }
 
 .guide-text {
@@ -72,6 +76,7 @@ main {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    padding: 0 var(--spacing);
 }
 
 .preview-container {
@@ -86,6 +91,7 @@ main {
     margin: 0 auto;
     padding: 0;
     position: relative;
+    animation: fadeIn 0.3s ease-in;
 }
 
 .frame-circle {
@@ -454,4 +460,76 @@ footer {
 .change-image-button:active,
 .share-button:active {
     transform: translateY(0);
+}
+
+/* SEO Optimizations */
+.seo-text {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.seo-text h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: normal;
+}
+
+.seo-text p {
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Add loading animation for better UX */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Add focus styles for accessibility */
+button:focus,
+a:focus {
+    outline: 2px solid var(--palestine-green);
+    outline-offset: 2px;
+}
+
+/* Add print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .frame-preview {
+        page-break-inside: avoid;
+    }
+    
+    .upload-section,
+    .share-section,
+    .crop-modal {
+        display: none !important;
+    }
+}
+
+/* Add dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: white;
+        --bg-color: black;
+    }
+}
+
+/* Add support for high contrast mode */
+@media (forced-colors: active) {
+    :root {
+        --palestine-red: CanvasText;
+        --palestine-green: CanvasText;
+        --palestine-black: CanvasText;
+        --palestine-white: Canvas;
+    }
 } 
