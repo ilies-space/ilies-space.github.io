@@ -20,20 +20,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let cropper = null;
     let currentImage = null;
 
+    // Analytics helper function
+    const trackEvent = (eventName, props = {}) => {
+        if (window.plausible) {
+            window.plausible(eventName, { props });
+        }
+    };
+
     // Handle click on upload button or frame circle
     uploadButton.addEventListener('click', () => {
         imageInput.click();
+        trackEvent('upload_button_click');
     });
 
     frameCircle.addEventListener('click', () => {
         if (!currentImage) {
             imageInput.click();
+            trackEvent('frame_circle_click');
         }
     });
 
     // Handle change image button
     changeImageBtn.addEventListener('click', () => {
         imageInput.click();
+        trackEvent('change_image_click');
     });
 
     // Share buttons functionality
@@ -41,14 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const shareText = encodeURIComponent('أضف إطار علم فلسطين إلى صورتك الشخصية 🇵🇸');
 
     shareWhatsapp.addEventListener('click', () => {
+        trackEvent('share', { platform: 'whatsapp' });
         window.open(`https://api.whatsapp.com/send?text=${shareText}%0A${shareUrl}`, '_blank');
     });
 
     shareTwitter.addEventListener('click', () => {
+        trackEvent('share', { platform: 'twitter' });
         window.open(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`, '_blank');
     });
 
     shareFacebook.addEventListener('click', () => {
+        trackEvent('share', { platform: 'facebook' });
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
     });
 
@@ -56,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
     imageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
+            trackEvent('image_selected', {
+                fileType: file.type,
+                fileSize: Math.round(file.size / 1024) // Size in KB
+            });
+
             const reader = new FileReader();
             reader.onload = (e) => {
                 cropImage.src = e.target.result;
@@ -84,27 +102,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     minCropBoxWidth: 200,
                     minCropBoxHeight: 200
                 });
+
+                trackEvent('cropper_initialized');
             };
             reader.readAsDataURL(file);
         }
     });
 
     // Zoom controls
+    let zoomCount = 0;
     zoomInButton.addEventListener('click', () => {
         cropper.zoom(0.1);
+        zoomCount++;
+        trackEvent('zoom', { direction: 'in', count: zoomCount });
     });
 
     zoomOutButton.addEventListener('click', () => {
         cropper.zoom(-0.1);
+        zoomCount--;
+        trackEvent('zoom', { direction: 'out', count: zoomCount });
     });
 
     // Rotate control
+    let rotateCount = 0;
     rotateButton.addEventListener('click', () => {
         cropper.rotate(90);
+        rotateCount++;
+        trackEvent('rotate', { count: rotateCount });
     });
 
     // Apply crop
     applyCropButton.addEventListener('click', () => {
+        trackEvent('crop_applied', {
+            zoomLevel: zoomCount,
+            rotations: rotateCount
+        });
+
         const croppedCanvas = cropper.getCroppedCanvas({
             width: 1920,
             height: 1920,
@@ -125,6 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
             previewSection.style.display = 'block';
             cropModal.style.display = 'none';
             
+            // Reset counters
+            zoomCount = 0;
+            rotateCount = 0;
+            
             // Destroy cropper
             cropper.destroy();
             cropper = null;
@@ -134,6 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle download button with high quality
     downloadBtn.addEventListener('click', () => {
+        trackEvent('download_started');
+
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         
@@ -204,6 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+            
+            trackEvent('download_completed', {
+                fileSize: Math.round(blob.size / 1024) // Size in KB
+            });
         }, 'image/png', 1.0);
     });
 }); 
