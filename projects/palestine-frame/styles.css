@@ -150,7 +150,7 @@ main {
     height: 100%;
     border-radius: 50%;
     background: conic-gradient(
-        from 0deg,
+        from 230deg,
         var(--palestine-red) 0deg 90deg,      /* Red (right) */
         var(--palestine-black) 90deg 180deg,   /* Black (top) */
         var(--palestine-white) 180deg 270deg,  /* White (left) */
