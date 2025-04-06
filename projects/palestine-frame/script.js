@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomOutButton = document.getElementById('zoomOutButton');
     const rotateButton = document.getElementById('rotateButton');
     const applyCropButton = document.getElementById('applyCrop');
-    const shareWhatsapp = document.getElementById('shareWhatsapp');
-    const shareTwitter = document.getElementById('shareTwitter');
-    const shareFacebook = document.getElementById('shareFacebook');
+    const copyLink = document.getElementById('copyLink');
     
     let cropper = null;
     let currentImage = null;
@@ -46,23 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
         trackEvent('change_image_click');
     });
 
-    // Share buttons functionality
-    const shareUrl = encodeURIComponent(window.location.href);
-    const shareText = encodeURIComponent('أضف إطار علم فلسطين إلى صورتك الشخصية 🇵🇸');
-
-    shareWhatsapp.addEventListener('click', () => {
-        trackEvent('share', { platform: 'whatsapp' });
-        window.open(`https://api.whatsapp.com/send?text=${shareText}%0A${shareUrl}`, '_blank');
-    });
-
-    shareTwitter.addEventListener('click', () => {
-        trackEvent('share', { platform: 'twitter' });
-        window.open(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`, '_blank');
-    });
-
-    shareFacebook.addEventListener('click', () => {
-        trackEvent('share', { platform: 'facebook' });
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
+    // Copy link functionality
+    copyLink.addEventListener('click', () => {
+        trackEvent('share', { platform: 'copy_link' });
+        navigator.clipboard.writeText(window.location.href)
+            .then(() => {
+                // Show a temporary success message
+                const originalText = copyLink.innerHTML;
+                copyLink.innerHTML = 'تم النسخ ✓';
+                setTimeout(() => {
+                    copyLink.innerHTML = originalText;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
     });
 
     // Handle file input change
