@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- Primary Meta Tags -->
     <title>إِطَار عَلَم فِلَسْطِين لِلصُّوَر الشَّخْصِيَّة 🇵🇸</title>
@@ -33,13 +33,30 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#009736">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Palestine Frame">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Palestine Frame">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="إطار فلسطين">
+    <meta name="application-name" content="إطار فلسطين">
 
+    <!-- PWA Links -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS Icons and Splash Screens using existing icons -->
+    <link rel="apple-touch-icon" href="icons/android/android-launchericon-192-192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/android/android-launchericon-144-144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/android/android-launchericon-192-192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="icons/android/android-launchericon-192-192.png">
+    
+    <!-- iOS Splash Screen using icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="icons/android/android-launchericon-512-512.png" media="(device-width: 320px) and (device-height: 568px)">
+    <link rel="apple-touch-startup-image" href="icons/android/android-launchericon-512-512.png" media="(device-width: 375px) and (device-height: 667px)">
+    <link rel="apple-touch-startup-image" href="icons/android/android-launchericon-512-512.png" media="(device-width: 414px) and (device-height: 736px)">
+    <link rel="apple-touch-startup-image" href="icons/android/android-launchericon-512-512.png" media="(device-width: 375px) and (device-height: 812px)">
+    <link rel="apple-touch-startup-image" href="icons/android/android-launchericon-512-512.png" media="(min-device-width: 768px)">
+    
     <!-- Fonts -->
     <link rel="stylesheet" href="https://www.arbfonts.com/fonts/zahra/zahra-arabic.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
@@ -79,6 +96,10 @@
         <header>
             <h1 class="main-title">أَظْهِر تَضَامُنَك مَعَ فِلَسْطِين 🇵🇸</h1>
             <p class="subtitle">لِنَتَّحِد فِي صُوَرِنَا الشَّخْصِيَّة لِتَسْلِيط الضَّوْء عَلَى القَضِيَّة ✊</p>
+            <button id="installButton" class="install-button" style="display: none;">
+                <span class="install-icon">⬇️</span>
+                تثبيت التطبيق للاستخدام بدون إنترنت
+            </button>
         </header>
 
         <main>
@@ -163,7 +184,93 @@
            
         </footer>
     </div>
+
+    <!-- PWA Install Prompt -->
+    <div id="pwaInstallPrompt" class="pwa-prompt" style="display: none;">
+        <div class="pwa-prompt-content">
+            <p>تثبيت التطبيق للاستخدام بدون إنترنت</p>
+            <div class="pwa-prompt-buttons">
+                <button id="pwaInstallButton" class="pwa-install-button">تثبيت</button>
+                <button id="pwaDismissButton" class="pwa-dismiss-button">لاحقاً</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // PWA Install Logic
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+        const pwaInstallPrompt = document.getElementById('pwaInstallPrompt');
+        const pwaInstallButton = document.getElementById('pwaInstallButton');
+        const pwaDismissButton = document.getElementById('pwaDismissButton');
+
+        // Check if the app is already installed
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            // App is installed, hide install button
+            installButton.style.display = 'none';
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button
+            installButton.style.display = 'flex';
+            
+            // Track that install prompt was shown
+            if (window.plausible) {
+                window.plausible('Install Prompt Shown');
+            }
+        });
+
+        // Handle install button click
+        installButton.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show install prompt
+                deferredPrompt.prompt();
+                
+                // Wait for user choice
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    if (window.plausible) {
+                        window.plausible('PWA Installed');
+                    }
+                    installButton.style.display = 'none';
+                } else {
+                    if (window.plausible) {
+                        window.plausible('PWA Install Rejected');
+                    }
+                }
+                
+                // Clear the deferredPrompt
+                deferredPrompt = null;
+            }
+        });
+
+        // Track successful installations
+        window.addEventListener('appinstalled', () => {
+            if (window.plausible) {
+                window.plausible('PWA Installation Complete');
+            }
+            installButton.style.display = 'none';
+        });
+    </script>
 </body>
 </html> 

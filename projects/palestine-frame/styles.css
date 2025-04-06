@@ -550,4 +550,143 @@ a:focus {
         --palestine-black: CanvasText;
         --palestine-white: Canvas;
     }
+}
+
+/* PWA Install Prompt Styles */
+.pwa-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: var(--palestine-black);
+    border: 2px solid var(--palestine-green);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+}
+
+.pwa-prompt-content {
+    text-align: center;
+}
+
+.pwa-prompt-content p {
+    color: var(--palestine-text);
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    font-family: 'Zahra Arabic', sans-serif;
+}
+
+.pwa-prompt-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.pwa-install-button {
+    padding: 12px 24px;
+    background: var(--palestine-green);
+    color: var(--palestine-text);
+    border: none;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-family: 'Zahra Arabic', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pwa-dismiss-button {
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--palestine-text);
+    border: 2px solid var(--palestine-green);
+    border-radius: 100px;
+    font-size: 1rem;
+    font-family: 'Zahra Arabic', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pwa-install-button:hover,
+.pwa-dismiss-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 151, 54, 0.3);
+}
+
+.pwa-dismiss-button:hover {
+    background: rgba(0, 151, 54, 0.2);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* PWA Display Improvements */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}
+
+/* Hide address bar in PWA mode */
+@media all and (display-mode: standalone) {
+    html {
+        height: 100vh;
+    }
+}
+
+/* Install Button Styles */
+.install-button {
+    display: none; /* Hidden by default, shown via JS */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 16px auto 0;
+    padding: 12px 24px;
+    background: var(--palestine-accent);
+    color: var(--palestine-text);
+    border: 2px solid var(--palestine-green);
+    border-radius: 100px;
+    font-size: 1rem;
+    font-family: 'Zahra Arabic', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.install-button:hover {
+    background: var(--palestine-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 151, 54, 0.3);
+    animation: none;
+}
+
+.install-icon {
+    font-size: 1.2rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 151, 54, 0.4);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(0, 151, 54, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 151, 54, 0);
+    }
 } 
