@@ -1,0 +1,134 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 27837,
+      "max": [
+        0.288508802652359,
+        0.2940864861011505,
+        0.151179701089859
+      ],
+      "min": [
+        -0.17562520503997803,
+        -0.19774654507637024,
+        -0.21411097049713135
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 27837,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 27837,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5125,
+      "count": 120000,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 334044,
+      "name": "Positions Buffer",
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 334044,
+      "byteOffset": 334044,
+      "name": "Normals Buffer"
+    },
+    {
+      "buffer": 0,
+      "byteLength": 222696,
+      "byteOffset": 668088,
+      "name": "Tex0 UV Buffer"
+    },
+    {
+      "buffer": 0,
+      "byteLength": 480000,
+      "byteOffset": 890784,
+      "name": "Faces Buffer"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "scene_data.bin",
+      "byteLength": 1370784
+    }
+  ],
+  "images": [
+    {
+      "name": "baseColor sRGB JPG Image",
+      "uri": "scene_img0.jpg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Basic Material",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.03999999910593033
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "name": "baseColor Sampler",
+      "wrapS": 33071,
+      "wrapT": 33071
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}
